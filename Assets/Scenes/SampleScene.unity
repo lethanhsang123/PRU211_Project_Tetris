@@ -625,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933429016}
   - component: {fileID: 1933429015}
+  - component: {fileID: 1933429018}
   - component: {fileID: 1933429017}
   m_Layer: 0
   m_Name: Board
@@ -670,24 +671,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933429014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e116d2e827119a747ae86988f9e9ff8e, type: 3}
+  m_Script: {fileID: 11500000, guid: c07dee201ae8f6c4bafc2801752125b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1933429018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933429014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a8236c0cde0854bb3b9d2eaf2203d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tetrominoes:
   - tetromino: 0
-    tile: {fileID: 11400000, guid: 10390071577479a4f887b47b6baaf007, type: 2}
+    tile: {fileID: 11400000, guid: fc17216e76979064ab9f2188ddf5c456, type: 2}
   - tetromino: 1
-    tile: {fileID: 11400000, guid: f7d3a1dc3ef6dd14681e01e044c2bf85, type: 2}
+    tile: {fileID: 11400000, guid: 50b37219dce74974c8eabc79a55aaccd, type: 2}
   - tetromino: 2
-    tile: {fileID: 11400000, guid: 7248e9beba176d642accceb7c2bdb91c, type: 2}
+    tile: {fileID: 11400000, guid: b66de94b75c40ce4d967b7da40c5b8e1, type: 2}
   - tetromino: 3
-    tile: {fileID: 11400000, guid: 7afd3d00175a69249a2d41f73e285e4f, type: 2}
+    tile: {fileID: 11400000, guid: 5d3d94dc62dd006478b185c8d1129cae, type: 2}
   - tetromino: 4
-    tile: {fileID: 11400000, guid: e65dc5a73d43d17499e8e0c3c93e59d4, type: 2}
+    tile: {fileID: 11400000, guid: ee7ce97d2119bea45890372ffbb21bcc, type: 2}
   - tetromino: 5
-    tile: {fileID: 11400000, guid: bdebd20c7663d34459c43dd4d575dfe9, type: 2}
+    tile: {fileID: 11400000, guid: fe188c79c8b037e479060af2d8c9654c, type: 2}
   - tetromino: 6
-    tile: {fileID: 11400000, guid: e44cf16c01dccc44187a0c273b524ccb, type: 2}
+    tile: {fileID: 11400000, guid: 4a0aa9efec59b7246b56865e49052988, type: 2}
+  spawnPosition: {x: -1, y: 8, z: 0}
 --- !u!1 &2133206613
 GameObject:
   m_ObjectHideFlags: 0
