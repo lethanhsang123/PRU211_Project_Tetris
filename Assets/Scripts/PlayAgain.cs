@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayAgain : MonoBehaviour
 {
+    //Playagain
     // Start is called before the first frame update
     public void OnPlayAgainButtonClicked()
     {
-        SceneManager.LoadScene("Tetris-Normal"); // "MainScene" là tên c?a scene chính c?a game
+        SceneManager.LoadScene("Tetris-Normal");
     }
 }

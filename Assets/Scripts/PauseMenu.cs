@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class PauseMenu : MonoBehaviour
 {
+    //Pause 
     public GameObject pauseMenu;
     public static bool GameIsPaused;
     public Tilemap tilemap { get; private set; }

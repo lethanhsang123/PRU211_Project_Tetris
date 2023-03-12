@@ -31,7 +31,7 @@ public class Board : MonoBehaviour
             tetrominoes[i].Initialize();
         }
     }
-
+    //s
     private void Start()
     {
         SpawnPiece();
