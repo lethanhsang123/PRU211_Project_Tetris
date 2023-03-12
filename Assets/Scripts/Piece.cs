@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Piece : MonoBehaviour
 {
+
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int[] cells { get; private set; }
@@ -16,6 +19,7 @@ public class Piece : MonoBehaviour
     private float stepTime;
     private float moveTime;
     private float lockTime;
+
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
@@ -41,7 +45,9 @@ public class Piece : MonoBehaviour
 
     private void Update()
     {
+        
         board.Clear(this);
+
 
         // We use a timer to allow the player to make adjustments to the piece
         // before it locks in place
@@ -77,6 +83,7 @@ public class Piece : MonoBehaviour
         }
 
         board.Set(this);
+
     }
 
     private void HandleMoveInputs()
@@ -242,11 +249,6 @@ public class Piece : MonoBehaviour
             return min + (input - min) % (max - min);
         }
     }
-    public void GameOver()
-    {
-        
-        //G?i ð?n màn h?nh game over
-        SceneManager.LoadScene("GameOver");
-    }
+   
 
 }

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tetris-Normal.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Ketthuc.unity
+    guid: 33347c53769769a44b91bad003dde469
   m_configObjects: {}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
@@ -10,7 +11,9 @@ public class Board : MonoBehaviour
     public Vector2Int boardSize = new Vector2Int(10, 20);
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
 
-    public RectInt Bounds {
+   
+    public RectInt Bounds
+    {
         get
         {
             Vector2Int position = new Vector2Int(-boardSize.x / 2, -boardSize.y / 2);
@@ -23,7 +26,8 @@ public class Board : MonoBehaviour
         tilemap = GetComponentInChildren<Tilemap>();
         activePiece = GetComponentInChildren<Piece>();
 
-        for (int i = 0; i < tetrominoes.Length; i++) {
+        for (int i = 0; i < tetrominoes.Length; i++)
+        {
             tetrominoes[i].Initialize();
         }
     }
@@ -40,9 +44,12 @@ public class Board : MonoBehaviour
 
         activePiece.Initialize(this, spawnPosition, data);
 
-        if (IsValidPosition(activePiece, spawnPosition)) {
+        if (IsValidPosition(activePiece, spawnPosition))
+        {
             Set(activePiece);
-        } else {
+        }
+        else
+        {
             GameOver();
         }
     }
@@ -50,7 +57,7 @@ public class Board : MonoBehaviour
     public void GameOver()
     {
         tilemap.ClearAllTiles();
-
+        SceneManager.LoadScene("Ketthuc");
         // Do anything else you want on game over here..
     }
 
@@ -82,12 +89,14 @@ public class Board : MonoBehaviour
             Vector3Int tilePosition = piece.cells[i] + position;
 
             // An out of bounds tile is invalid
-            if (!bounds.Contains((Vector2Int)tilePosition)) {
+            if (!bounds.Contains((Vector2Int)tilePosition))
+            {
                 return false;
             }
 
             // A tile already occupies the position, thus invalid
-            if (tilemap.HasTile(tilePosition)) {
+            if (tilemap.HasTile(tilePosition))
+            {
                 return false;
             }
         }
@@ -105,9 +114,12 @@ public class Board : MonoBehaviour
         {
             // Only advance to the next row if the current is not cleared
             // because the tiles above will fall down when a row is cleared
-            if (IsLineFull(row)) {
+            if (IsLineFull(row))
+            {
                 LineClear(row);
-            } else {
+            }
+            else
+            {
                 row++;
             }
         }
@@ -122,7 +134,8 @@ public class Board : MonoBehaviour
             Vector3Int position = new Vector3Int(col, row, 0);
 
             // The line is not full if a tile is missing
-            if (!tilemap.HasTile(position)) {
+            if (!tilemap.HasTile(position))
+            {
                 return false;
             }
         }
