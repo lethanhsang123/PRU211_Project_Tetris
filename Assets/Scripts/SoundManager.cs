@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
+    public AudioClip Xoay;
+    public AudioClip Phahuy;
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
@@ -15,7 +17,6 @@ public class SoundManager : MonoBehaviour
         { 
             Load(); 
         }
-        AmThanh = GetComponent<AudioSource>();
     }
 
     public void ChangeVolum()
@@ -34,14 +35,5 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 
-    private AudioClip DiChuyen;
-    private AudioClip RoiXuong;
-    private AudioClip Xoay;
-
-    private AudioSource AmThanh;
-
-    private void AmThanhDiChuyen()
-    {
-        AmThanh.PlayOneShot(DiChuyen);
-    }
+  
 }

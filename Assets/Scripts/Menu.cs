@@ -28,4 +28,20 @@ public class Menu : MonoBehaviour
     {
         Application.LoadLevel("Tetris-Normal");
     }
+    public void BtnMenu()
+    {
+        Application.LoadLevel("Menu game");
+    }
+
+    public void BtnThoat()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void BtnQuit()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    
 }

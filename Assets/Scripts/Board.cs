@@ -11,7 +11,8 @@ public class Board : MonoBehaviour
     public Vector2Int boardSize = new Vector2Int(10, 20);
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
 
-   
+    //private AudioSource AmThanh;
+    //private AudioClip AmThanhPhaHuy;
     public RectInt Bounds
     {
         get
@@ -35,6 +36,7 @@ public class Board : MonoBehaviour
     private void Start()
     {
         SpawnPiece();
+        //AmThanh = GetComponent<AudioSource>();
     }
 
     public void SpawnPiece()
@@ -122,7 +124,9 @@ public class Board : MonoBehaviour
             {
                 row++;
             }
+            //AmThanh.PlayOneShot(AmThanhPhaHuy);
         }
+        
     }
 
     public bool IsLineFull(int row)

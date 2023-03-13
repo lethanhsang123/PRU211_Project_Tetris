@@ -21,6 +21,11 @@ public class Piece : MonoBehaviour
     private float lockTime;
 
 
+
+    public void StartUp()
+    {
+
+    }
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
         this.data = data;
@@ -45,10 +50,8 @@ public class Piece : MonoBehaviour
 
     private void Update()
     {
-        
+
         board.Clear(this);
-
-
         // We use a timer to allow the player to make adjustments to the piece
         // before it locks in place
         lockTime += Time.deltaTime;
@@ -57,6 +60,7 @@ public class Piece : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Q))
         {
             Rotate(-1);
+            
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.E))
         {
@@ -83,9 +87,10 @@ public class Piece : MonoBehaviour
         }
 
         board.Set(this);
+        //audio.Play();
 
     }
-    //
+    
     private void HandleMoveInputs()
     {
         // Soft drop movement
@@ -94,6 +99,7 @@ public class Piece : MonoBehaviour
             if (Move(Vector2Int.down))
             {
                 // Update the step time to prevent double movement
+                
                 stepTime = Time.time + stepDelay;
             }
         }
@@ -107,6 +113,7 @@ public class Piece : MonoBehaviour
         {
             Move(Vector2Int.right);
         }
+      
     }
 
     private void Step()

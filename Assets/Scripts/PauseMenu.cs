@@ -37,12 +37,18 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+
+    public void BtnMenu2()
+    {
+        Application.LoadLevel("GameOver");
     }
 
 }
