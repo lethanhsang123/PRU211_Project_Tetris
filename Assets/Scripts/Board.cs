@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -15,6 +16,12 @@ public class Board : MonoBehaviour
     public Text hud_score;
     public int numberLineCleared = 0;
     public int score = 0;
+
+    
+    public int HighScore = 0;
+
+    
+
     public void updateScore() 
     { 
         if(numberLineCleared > 0) 
@@ -33,12 +40,14 @@ public class Board : MonoBehaviour
             }
         }
         numberLineCleared = 0;
+        
 
 
     }
 
     void UpdateUI()
     {
+        
         hud_score.text = score.ToString();
     }
 
@@ -94,6 +103,7 @@ public class Board : MonoBehaviour
         else
         {
             GameOver();
+            
         }
     }
 
@@ -102,6 +112,7 @@ public class Board : MonoBehaviour
         tilemap.ClearAllTiles();
 
         // Do anything else you want on game over here..
+        SceneManager.LoadScene("GameOver");
     }
 
     public void Set(Piece piece)
