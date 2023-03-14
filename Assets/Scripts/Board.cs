@@ -18,8 +18,7 @@ public class Board : MonoBehaviour
     public int score = 0;
 
     
-    public int HighScore = 0;
-    public Text txtHighScore;
+    
 
 
 
@@ -49,13 +48,9 @@ public class Board : MonoBehaviour
 
     void UpdateUI()
     {
-        HighScore = PlayerPrefs.GetInt("HighScore", 0);
-        if(HighScore < score)
-        {
-            PlayerPrefs.SetInt("HighScore", score);
-        }
+        
         hud_score.text = score.ToString();
-        txtHighScore.text = HighScore.ToString();
+        
     }
 
     public Tilemap tilemap { get; private set; }
