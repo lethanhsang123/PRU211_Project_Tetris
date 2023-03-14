@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -13,9 +14,21 @@ public class Board : MonoBehaviour
     public static int currentScore = 0;
 
     public Text hud_score;
+
     public Text hud_highscore;
+
     public int numberLineCleared = 0;
     public int score = 0;
+
+    public int HighScore;
+
+    public Tilemap tilemap { get; private set; }
+    public Piece activePiece { get; private set; }
+
+    public TetrominoData[] tetrominoes;
+    public Vector2Int boardSize = new Vector2Int(10, 20);
+    public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
+    //Score - A Quyen
     public void updateScore()
     {
         if (numberLineCleared > 0)
@@ -37,19 +50,19 @@ public class Board : MonoBehaviour
 
 
     }
-
+    //Save highcore
     void UpdateUI()
     {
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+        PlayerPrefs.Save();
+        if (HighScore < score)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
         hud_score.text = score.ToString();
+        hud_highscore.text = HighScore.ToString();
     }
-
-    public Tilemap tilemap { get; private set; }
-    public Piece activePiece { get; private set; }
-
-    public TetrominoData[] tetrominoes;
-    public Vector2Int boardSize = new Vector2Int(10, 20);
-    public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
-
+    //Score A Quyen
     public RectInt Bounds
     {
         get
@@ -69,12 +82,11 @@ public class Board : MonoBehaviour
             tetrominoes[i].Initialize();
         }
     }
-
+    //s
     private void Start()
     {
         SpawnPiece();
     }
-
     void Update()
     {
         updateScore();
@@ -101,7 +113,7 @@ public class Board : MonoBehaviour
     public void GameOver()
     {
         tilemap.ClearAllTiles();
-
+        SceneManager.LoadScene("Ketthuc");
         // Do anything else you want on game over here..
     }
 
@@ -182,7 +194,6 @@ public class Board : MonoBehaviour
             {
                 return false;
             }
-
         }
         numberLineCleared++;
         return true;
