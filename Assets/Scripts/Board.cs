@@ -1,17 +1,102 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
+    public int scoreOneLine = 20;
+    public int scoreTwoLine = 50;
+    public int scoreThreeLine = 120;
+    public int scoreFourLine = 200;
+
+    private int NumberRowsThisTurn = 0;
+    public static int currentScore = 0;
+    public int numberLineCleared = 0;
+    public Text hud_score;
+    public Text hud_highscore;
+    
+    public int score = 0;
+    public int HighScore;
+    //public Text hud_score2;
+    //public Text hud_highscore2;
+
+    //public int score2 = 0;
+    //public int HighScore2;
+
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
 
     public TetrominoData[] tetrominoes;
     public Vector2Int boardSize = new Vector2Int(10, 20);
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
+    //Score - A Quyen
+    public void updateScore()
+    {
+        if (numberLineCleared > 0)
+        {
+            switch (numberLineCleared)
+            {
+                case 1:
+                    score += scoreOneLine; break;
+                case 2:
+                    score += scoreTwoLine; break;
+                case 3:
+                    score += scoreThreeLine; break;
+                case 4:
+                    score += scoreFourLine; break;
+                default: break;
+            }
+        }
+        numberLineCleared = 0;
 
-   
+
+    }
+    //public void updateScore2()
+    //{
+    //    if (numberLineCleared > 0)
+    //    {
+    //        switch (numberLineCleared)
+    //        {
+    //            case 1:
+    //                score2 += scoreOneLine; break;
+    //            case 2:
+    //                score2 += scoreTwoLine; break;
+    //            case 3:
+    //                score2 += scoreThreeLine; break;
+    //            case 4:
+    //                score2 += scoreFourLine; break;
+    //            default: break;
+    //        }
+    //    }
+    //    numberLineCleared = 0;
+
+
+    //}
+
+    void UpdateUI()
+    {
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+        PlayerPrefs.Save();
+        if (HighScore < score)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        hud_score.text = score.ToString();
+        hud_highscore.text = HighScore.ToString();      
+    }
+    //void UpdateUI2()
+    //{
+    //    //HighScore2 = PlayerPrefs.GetInt("HighScore", 0);
+    //    PlayerPrefs.Save();
+    //    if (HighScore2 < score2)
+    //    {
+    //        PlayerPrefs.SetInt("HighScore", score2);
+    //    }
+    //    hud_score2.text = score2.ToString();
+    //    hud_highscore2.text = HighScore2.ToString();
+    //}
+    //Score A Quyen
     public RectInt Bounds
     {
         get
@@ -35,6 +120,13 @@ public class Board : MonoBehaviour
     private void Start()
     {
         SpawnPiece();
+    }
+    void Update()
+    {
+        updateScore();
+        UpdateUI();
+        //updateScore2();
+        //UpdateUI2();
     }
 
     public void SpawnPiece()
@@ -139,7 +231,7 @@ public class Board : MonoBehaviour
                 return false;
             }
         }
-
+        numberLineCleared++;
         return true;
     }
 
